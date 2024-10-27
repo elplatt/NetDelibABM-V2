@@ -465,6 +465,10 @@ including revolutionary cells
 the UK suffragette movement \cite{crossley_covert_2012},
 and the global network of cities \cite{taylor_world_2015}.
 
+\subsection{Network Types}
+
+TODO
+
 \subsection{Participatory Governance and Social Learning}
 This paper touches on several related topics, namely: problem-solving, decision-making, deliberation, and social learning.
 These concepts are very closely related, but not equivalent,
@@ -478,8 +482,9 @@ regime can participate in making and modifying their rules.''
 \cite{ostrom_collective_2000}
 In this sense, governance is largely about {\em decision-making} regarding
 rules and their enforcement.
-But we are careful to note that rules and decisions can take many forms,
-both formal and informal.
+But we are careful to note that rules and decisions can implicit
+{\em rules-in-use} in addition to explicit {\em rules-in-form}
+\cite{hess_framework_2005, keegan_evolution_2017}.
 
 \subsubsection{Deliberation}
 {\em Deliberation} is an exemplar of participatory governance.
@@ -499,25 +504,71 @@ And again, while ``deliberation'' may conjure images of formal institutions,
 note that the above definition includes both formal and informal communication,
 as long as it is mutual and non-coercive.
 
-\subsubsection{Social Learning}
+\subsubsection{Social Learning\label{subsec:social}}
 In {\em social learning}, individuals revise their beliefs by observing and interacting with others.
 Social learning allows an individual to augment their limited information and perspective by observing others who may have different information
-and perspectives.
+and perspectives \cite{hong_interpreted_2009, golub_naive_2010}.
 When this observation takes the form of mutual communication,
-social learning fits the above definition of deliberation quite well.
-In fact, many models of social learning do assume mutual communication
-\cite{golub_naive_2010, lazer_network_2007, mason_collaborative_2012, barkoczi_social_2016, gomez_clustering_2019}
-and can just as easily be seen as models of deliberation.
-Deliberation is a special case of social learning.
+social learning fits nicely into the above definition of deliberation.
+In fact, many models of social learning implicitly assume mutual communication
+\cite{golub_naive_2010, lazer_network_2007, mason_collaborative_2012, barkoczi_social_2016, gomez_clustering_2019}.
+Deliberation is a thus a type of social learning,
+and the results from the above models should be expected to apply.
 
-Social learning and problem solving
+Why do people engage in social learning?
+Usually to solve problems.
+Specifically, to solve problems too complex or resource-intensive to
+solve individually.
+In other words, social learning is also a form of collective
+problem-solving and collective intelligence.
+Participatory governance is such a problem.
 
-putting it all together
+In the case of participatory governance,
+there are two related, but subtly different problems being solved.
+The first problem is for participants try to accurately determine which outcome would maximize social utility.
+For example, a group deciding what type of pizza to order might gather information on other participants' most and leaast favorite pizza toppings.
+The second problem is for participants to
+advocate for their desired outcome,
+which might be based on their personal preference
+or on the expected social utility,
+e.g., arguing for their favorite pizza topping
+or for a pizza topping they believe will satisfy the most people.
+The former problem is a matter of information and mathematics,
+while the latter is a matter of taste and rhetoric.
+Matters of taste are beyond our methods, so our models focus on the former problem of gathering information and maximizing utility.
+So we model a group's ability to identify outcomes that maximize
+common good.
+This is a necessary, but not sufficient condition for the group to actually
+adopt such an outcome.
+
+\subsubsection{Putting It All Together}
+Summarizing the above, we use an agent-based model to simulate a group's
+ability to collectively problem-solve
+---
+through the use of mutually-communicative,
+deliberation-like social learning
+---
+the problem of fidning a governance outcome that maximizes the social utility of the group.
+To the extent that a group prioritizes such outcomes,
+our models should provide meaningful insight.
 
 \subsection{When Social Learning Goes Wrong}
-Information cascades, polarization, majority illusion
-
-\subsection{Network Types}
+While social learning can allow members of a group to combine their knowledge and resources,
+it can also introduce new problems.
+When information is repeated without sufficient independent checking,
+a false belief starting with one person can be repeated and amplified until it is accepted by a large number of people:
+an {\em information cascade} \cite{banerjee_simple_1992}.
+Similarly, in the {\em majority illusion},
+an individual may incorrectly infer that the majority of a group holds a particular belief if they are only exposed to others who do hold that belief \cite{lerman_majority_2015}.
+Finally,
+rather than reaching a single consensus,
+social learning can cause {\polarization},
+in which a group fragments into two or more factions which hold similar beliefs within each group,
+but conflicting beliefs between groups
+\cite{schkade_what_2007}.
+In groups that successfully implement large-scale participatory decision-making,
+these pitfalls must be avoided.
+One of this paper's main goals is to identify potential structural or behavioral mechanisms that might allow a group to do so.
 
 \subsection{Agent-Based Modeling\label{subsec:abm}}
 
@@ -569,10 +620,10 @@ We have used it to motivate the NK Model as a suitable model for complex policy 
 However, the NK model is just as applicable to a situation where, for example, the "voting blocs" are farm crops, the "policies" are farming practices, and the "fitness" is the crop yield; or to genes, mutations, and reproduction rates, as in the original conception of the NK Model \cite{kauffman_towards_1987}.
 
 We draw attention to the above distinction because of a subtle, but very important point.
-In participatory decision-making, there are two related but separate approaches.
-In one approach, each participant argues to support the outcome they believe will personally benefit them, e.g., arguing for their favorite pizza topping.
-Alternatively, participants might try to determine which solution maximizes social utility, e.g., learning about each other's pizza topping preferences and arguing for the one they believe the most people will happily eat.
-The former is a matter of taste, while the latter is a matter of mathematics.
+As discussed in Section \ref{subsec:social} there are two related but separate approaches to participatory governance.
+
+TODO
+
 The NK Model bridges these two approaches.
 It asks: given a set of subjective preferences,
 what is the objective quality of a particular outcome?
