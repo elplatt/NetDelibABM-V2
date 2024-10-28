@@ -20,8 +20,8 @@
 
 %% These commands are for a PROCEEDINGS abstract or paper.
 \acmConference[CSCW '25]{Make sure to enter the correct
-  conference title from your rights confirmation emai}{Nov 0,
-  2025}{City, Country}
+  conference title from your rights confirmation emai}{Oct 18--22
+  2025}{Bergen, Norway}
 \acmISBN{978-1-4503-XXXX-X/18/06}
 
 
@@ -465,10 +465,6 @@ including revolutionary cells
 the UK suffragette movement \cite{crossley_covert_2012},
 and the global network of cities \cite{taylor_world_2015}.
 
-\subsection{Network Types}
-
-TODO
-
 \subsection{Participatory Governance and Social Learning}
 This paper touches on several related topics, namely: problem-solving, decision-making, deliberation, and social learning.
 These concepts are very closely related, but not equivalent,
@@ -571,8 +567,38 @@ these pitfalls must be avoided.
 One of this paper's main goals is to identify potential structural or behavioral mechanisms that might allow a group to do so.
 
 \subsection{Agent-Based Modeling\label{subsec:abm}}
+Our Agent-Based Model (ABM) closely follows previous ABM work on social learning
+\cite{lazer_network_2007, barkoczi_social_2016, gomez_clustering_2019}.
+The ABM consists of a large collection of {\em agents}:
+simulated entities, each with their own private information and the ability to update that information based on interactions with other agents.
+In our case, the agents are intended to represent
+individual participants in a participatory decision-making
+process.
+The exact behavior of the agents is determined by three factors:
+\begin{description}
+\item[Objective Function]
+At the beginning of each ABM run, an objective function $Q(s)$ is defined.
+The goal of the agents is to find an $s$ that maximizes
+$Q(s)$.
+\item[Social Network]
+The social network provides links between some pairs of agents and not others.
+These links allow neighboring agents to interact with each other and share information.
+\item[Social Learning Strategy]
+The social learning strategy is a simple set of rules the agents use to interact with their neighbors and update their belief about the best value of $s$.
+\end{description}
 
-\subsection{Social Learning Strategies}
+At the beginning of a simulation run, each agent is initialized with a random $s$.
+The run proceeds in discrete time steps.
+At each time steps, each agent interacts with each of its neighbors according to its strategy and
+updates its belief.
+After a fixed number of time steps, the run ends.
+Ideally, the number of time steps is large enough that
+the agents' beliefs have reached a stable state.
+Different agents may still have different beliefs,
+but at this point the distributions of beliefs and the potential outcomes of votes can be analyzed.
+This process is repeated for many runs,
+each with a new set of initial conditions and objective $Q(s)$.
+By performing many runs, statistical differences between different networks and/or strategies can be identified.
 
 \subsection{NK Model\label{subsec:nk}}
 For our agent-based model, we need an objective function $Q(s)$ for the agents to maximize.
@@ -621,16 +647,50 @@ However, the NK model is just as applicable to a situation where, for example, t
 
 We draw attention to the above distinction because of a subtle, but very important point.
 As discussed in Section \ref{subsec:social} there are two related but separate approaches to participatory governance.
-
-TODO
-
+One, to advocate for a preferred outcome based on preferences;
+the other, to determine which outcome would best satisfy everyone's preferences.
 The NK Model bridges these two approaches.
-It asks: given a set of subjective preferences,
+It asks: given a random set of subjective preferences,
 what is the objective quality of a particular outcome?
 
 \subsubsection{Properties of the NK Model}
+The real-world applicability of our findings will depend on how well a real-world system agrees with the assumptions of our model.
+We enumerate key assumptions and properties below.
+\begin{description}
+\item[Discrete solution space]
+The NK model solution space consists of discrete states.
+This space best represents a set of yes/no questions.
+However, the NK model can also be applied to any solution space that can be approximated by a discrete set of solutions, for example, by dividing a continuous range into bins.
+\item[Large solution space]
+There are $2^N$ possible solutions for any particular instance of the NK model.
+The number of solutions grows exponentially with the number of bits in $s$.
+The NK model is thus well-suited to representing problems with far more potential solutions than could ever be evaluated.
+For example, for N=33, there would be more potential solutions than humans alive on Earth (at time of writing).
+\item[Rugged solution space]
+Often called a ``rugged landscape,'' the NK model has many local maxima and minima,
+often described as ``hills'' and ``valleys.''
+A simple hill-climbing search by changing one solution bit at a time will lead to a local maximum,
+but there is no way to know if a better solution exists, other than searching for it.
+This is a common (if frustrating) feature of real-world problems.
+\item[Tunably rugged]
+In addition to being rugged, the ruggedness of the NK model can be ``tuned'' by changing the $K$ parameter.
+For a value of $K=0$, each solution bit can be optimized independently, and there is a single local maximum.
+For the maximum value of $K=N-1$,
+the landscape is essentially random.
+For intermediate values of $K$,
+there are a large number of local maxima, but they are surrounded by ``basins of attraction'' which allow those maxima to be found from nearby solutions using hill-climbing.
+These intermediate values are typically the ones used to mimic real-world rugged landscapes.
+\item[NP-complete]
+For $K \geq 3$, the problem of finding the global optimum of the NK model in general is NP-complete \cite{weinberger_np_1996}.
+This means that the NK model is computationally equivalent to the hardest problems solvable by a computer,
+and can thus model the complexity of any problem that is capable of being modeled computationally.
+\end{description}
 
-\subsubsection{Assmptions of the NK Model}
+\subsection{Social Learning Strategies}
+
+\subsection{Network Types}
+
+TODO
 
 \section{Methods\label{sec:methods}}
 Agent-based model
