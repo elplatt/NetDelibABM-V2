@@ -42,47 +42,48 @@
 %% Of note is the shared affiliation of the first two authors, and the
 %% "authornote" and "authornotemark" commands
 %% used to denote shared contribution to the research.
-\author{Edward L. Platt}
 %\authornote{Both authors contributed equally to this research.}
-\email{ed@elplatt.com}
-\orcid{0000-0003-2148-3841}
-\affiliation{%
-  \institution{Cinder Oak}
-  \city{Ann Arbor}
-  \state{Michigan}
-  \country{USA}
+\author{Authors redacted for peer review}
+%\author{Edward L. Platt}
+%\email{ed@elplatt.com}
+%\orcid{0000-0003-2148-3841}
+%\affiliation{%
+%  \institution{Cinder Oak}
+%  \city{Ann Arbor}
+%  \state{Michigan}
+%  \country{USA}
+%}
+%\affiliation{%
+%  \institution{University of Michigan}
+%  \city{Ann Arbor}
+%  \state{Michigan}
+%  \country{USA}
+%}
+
+%\author{Herminio Bodon}
+%\orcid{0009-0004-3270-3621}
+%\email{HerminioBodon2020@u.northwestern.edu}
+%\affiliation{%
+%  \institution{Northwestern University}
+%  \city{Evanston}
+%  \state{Illinois}
+%  \country{USA}
 }
-\affiliation{%
-  \institution{University of Michigan}
-  \city{Ann Arbor}
-  \state{Michigan}
-  \country{USA}
+%\affiliation{%
+%  \institution{University of Michigan}
+%  \city{Ann Arbor}
+%  \state{Michigan}
+%  \country{USA}
 }
 
-\author{Herminio Bodon}
-\orcid{0009-0004-3270-3621}
-\email{HerminioBodon2020@u.northwestern.edu}
-\affiliation{%
-  \institution{Northwestern University}
-  \city{Evanston}
-  \state{Illinois}
-  \country{USA}
-}
-\affiliation{%
-  \institution{University of Michigan}
-  \city{Ann Arbor}
-  \state{Michigan}
-  \country{USA}
-}
-
-\author{Daniel M. Romero}
-\orcid{0000-0002-8351-3463}
-\affiliation{%
-  \institution{University of Michigan}
-  \city{Ann Arbor}
-  \state{Michigan}
-  \country{USA}}
-\email{drom@umich.edu}
+%\author{Daniel M. Romero}
+%\orcid{0000-0002-8351-3463}
+%\affiliation{%
+%  \institution{University of Michigan}
+%  \city{Ann Arbor}
+%  \state{Michigan}
+%  \country{USA}}
+%\email{drom@umich.edu}
 
 
 %%
@@ -91,13 +92,13 @@
 %% other information printed in the page headers. This command allows
 %% the author to define a more concise list
 %% of authors' names for this purpose.
-\renewcommand{\shortauthors}{Platt, Bodon, \& Romero}
+%\renewcommand{\shortauthors}{Platt, Bodon, \& Romero}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-
+Large-scale participatory decision-making is notoriously difficult, but successful examples have recently become more common. These examples have been enabled in-part by the fast, affordable, many-to-many communication afforded by the internet. But not all large-scale participatory projects on the internet are successful. We review the empirical literature on successful large-scale participatory projects and identify a common feature: interlocking network structure. We use agent-based modelig to simulate the effects of interlocking network structure on large-scale social learning. We find that in high-conformity contexts, interlocks can provide a protective effect against information cascades and polarization. Our findings suggest that interlocking network structure is beneficial for large-scale participatory projects, and we identify likely mechanisms behind that benefit.
 \end{abstract}
 
 %%
@@ -134,7 +135,7 @@
 %% the work being presented. Separate the keywords with commas.
 \keywords{Collaboration, Social Learning, Networks, Interlocks, Information Cascades, Polarization, Deliberation, Consensus}
 
-\received{16 January 2024}
+\received{29 October 2024}
 
 %%
 %% This command processes the author and affiliation and title
@@ -404,7 +405,7 @@ which resurfaced in the 60,000 self-organized volunteers of the Occupy Sandy cri
 Similarly, participatory practices were a key part of the 2013 Gezi Park protests
 \cite{tufekci_twitter_2017}.
 
-\subsection{Interlocks}
+\subsection{Interlocks\label{subsec:interlocks}}
 When reviewing these examples, a remarkably common pattern stands out: interlocking network structure.
 In these successful examples of large-scale participatory projects,
 communication is frequently organized into small participatory groups of peers based on interest, region, function, or simply happenstance.
@@ -667,7 +668,7 @@ The NK model is thus well-suited to representing problems with far more potentia
 For example, for N=33, there would be more potential solutions than humans alive on Earth (at time of writing).
 \item[Rugged solution space]
 Often called a ``rugged landscape,'' the NK model has many local maxima and minima,
-often described as ``hills'' and ``valleys.''
+often described as ``peaks'' and ``valleys.''
 A simple hill-climbing search by changing one solution bit at a time will lead to a local maximum,
 but there is no way to know if a better solution exists, other than searching for it.
 This is a common (if frustrating) feature of real-world problems.
@@ -760,7 +761,9 @@ The shortcuts act as weak ties \cite{granovetter_strength_1973},
 reducing the ``size'' (mean shortest path length)
 of the network by creating short paths
 between any two individuals.
-In Watts-Strogatz small-world network \cite{watts_collective_1998},
+High clustering and short path length are often observed in real-world social
+networks.
+In a $k$-degree Watts-Strogatz small-world network \cite{watts_collective_1998},
 individuals are assigned to locations on a ring and connected to their
 $k$ nearest neighbors (not to be confused with $K$ from the NK model).
 For each of an individuals links,
@@ -768,20 +771,245 @@ with a probability $\beta$,
 the other end of the link is assigned to a random individual,
 creating the shortcut edges.
 
-\subsubsection{Preferential-Attachment}
-
-\subsubsection{Interlocks}
-
+\subsubsection{Preferential Attachment}
+Some real-world social networks exhibit a skewed, heavy-tail degree distribution:
+most individuals linked to few others,
+but a few ``hubs'' or ``influencers'' linked to many others.
+Such networks can be modeled using the Barabási-Albert preferential attachment model
+\cite{barabasi_emergence_1999}.
+In this model, as individuals are added to a network,
+they are randomly linked to $m$ others.
+The probability of such links is proportional to the target's degree
+(number of existing links),
+creating a ``rich-get-richer'' dynamic and a heavy-tailed degree distribution.
+These networks model settings where a small number of individuals produce a disproportionate share of the communication due to factors such as social capital, expertise, or confidence.
 
 \section{Methods\label{sec:methods}}
 
-Agent-based model parameters
+\subsection{Modeling Interlocks: Random-Pod Networks\label{subsec:randompod}}
+In addition to the two common models of social networks above,
+we also model interlock networks,
+the central focus of this paper.
+Interlock networks are described in detail in Section \ref{subsec:interlocks},
 
-Random-Pod
+We model an interlock as a time-dependent network.
+For a degree $k$ {\em random-pod network},
+each agent is randomly assigned to a ``pod''
+such that $k+1$ agents are assigned to each pod.
+Agents assigned to the same pod are linked by a network edge,
+resulting in a fully-connected clique for each pod.
+After some number of time-steps, the pod assignments are re-randomized,
+creating new cliques.
+The movement of agents between pods over the course of the simulation
+creates interlocking structure.
+
+By using a time-dependent network, we are able to specify the degree (number of neighbors) of each agent at any given time.
+This allows us to choose all of our networks to have the same mean degree,
+reducing potential counfounding effects.
+
+The random-pod network model is similar to Salehi and Bernstein's network rotation
+\cite{salehi_hive:_2018}.
+The key difference is that in network rotation,
+pods are changed by a single member at a time, while the random-pod network
+reassigns all members simultaneously.
+We opt for simultaneous reassignment because it best represents interlock networks
+with multiple membership in distinct groups.
+
+\subsection{Agent-Based Model Parameters}
+We simulate social-learning using an Agent-Based Model (ABM) closely resembling those of other authors \cite{
+lazer_network_2007,
+barkoczi_social_2016,
+gomez_clustering_2019}.
+For our model, we simulate 100 agents.
+Each agent maintains a solution candidate and updates that candidate
+at each time step according to its learning strategy.
+Within each run, all agents use the same learning strategy.
+Each run is simulated for 300 time steps
+(we have found this is sufficient to achieve convergence for our paremeters).
+We created 1000 random instances of the NK model.
+For each instance, we simulated each combination of network and learning strategy.
+
+\subsubsection{Objective Function}
+Agents search for a binary string $s$ that maximizes an objective
+function $Q(s)$ defined by the NK model \cite{kauffman_towards_1987, weinberger_local_1991}.
+In keeping with other authors \cite{lazer_network_2007, barkoczi_social_2016}, we use $N=15$, $K=6$.
+We also follow the common practice of raising the raw NK fitness to a power of 8
+to emphasize peaks and valleys: $Q(s) = Q_{NK}(s)^8$.
+Similarly, we normalize fitness values to the global maximum.
+
+\subsubsection{Network}
+Agents are placed on a network with the vertices representing
+the agents, and edges representing which agents can interact.
+We use three separate network topologies:
+\begin{description}
+    \item[Small-World:]{A 4-degree Watts-Strogatz small-world network with $\beta = 0.1$;}
+    \item[Preferential Attachment:]{A Barabási-Albert network with $m=2$ (mean degree 4);}
+    \item[Random-Pod:]{A 4-degree random-pod network.}
+\end{description}
+
+\subsubsection{Learning Strategy}
+At each time step, agents perform individual learning on their previous
+solution candidate, followed by one of two social learning strategies:
+\begin{description}
+\item[Best-Neighbor]{(low-conformity)},
+\item[Conform]{(high-conformity)}.
+\end{description}
 
 \section{Results}
 
+\subsection{Interlocks and Solution Quality}
+Figure \ref{fig:quality} shows the distribution of solution quality over
+the 1000 simulation runs.
+The quality shown is averaged over the ending solutions of all 100 agents.
+For the low-conformity best-neighbor strategy,
+all network topologies perform comparably.
+For the conform strategy however,
+both the small-world and preferential attachment networks
+perform notably worse, while the random-pod network actually performs
+very slightly better.
+It is not surprising that the small-world and preferential attachment networks
+show reduced solution quality in a high-conformity settings.
+In such settings, it is well-known that information cascades can lead to the adoption of initially popular but sub-optimal solutions
+\cite{banerjee_simple_1992}.
+So it is remarkable that the random-pod network does not show this behavior.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{fig-netdelib-results-net-boxplot.png}
+\caption{TODO}
+\label{fig:quality}
+\begin{description}
+\end{description}
+\end{center}
+\end{figure}
+
+For more insight into the mechanism behind the random-pod network's
+performance in the high-conformity case,
+we examine the progress of the agents over the course of the simulation.
+In particular, we focus on the basins of attraction associated with each agent's solution.
+The basins of attraction are sets of similar solutions that all converge
+to the same local maximum under a simple hill-climbing algorithm.
+
+Figure \ref{fig:transitions} shows, on average,
+how many agents switch basins of attraction at each timestep.
+We further divide these transitions by whether the new basin's maximum is
+higher or lower than the previous basin's.
+We observe a qualitative difference between the behavior of the agents in the
+random-pod network as compared to the other two networks.
+In the small-world and preferential attachment networks,
+the number of transitions decreases quickly, with the number of positive
+transitions slightly larger than the number of negative.
+For random-pod however,
+the number of positive transitions remains notably higher than the number
+of negative transitions.
+While agents in the random-pod network are just as likely to adopt
+a popular sub-optimal solution temporarily,
+they more frequently continue trying new solutions until finding an
+improvment.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{fig-conform-transition-basin.png}
+\caption{TODO}
+\label{fig:transitions}
+\begin{description}
+\end{description}
+\end{center}
+\end{figure}
+
+\subsection{Interlocks and Convergence Speed}
+Figure \ref{fig:convergence} shows the distribution of time steps necessary for agents to converge to a stable solution.
+In the low-conformity best-neighbor case,
+random-pod performs comparably to preferential attachment,
+both of which converge slightly faster than the small-world network.
+All networks converge considerably slower in the high-conformity case.
+While improved performance might be expected to come at the cost of slower
+speed,
+the random-pod network's median convergence is actually faster than that of the other two networks.
+However, the random-pod networks slowest runs are notably slower than those for the other networks.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{fig-netdelib-converge-net-boxplot.png}
+\caption{TODO}
+\label{fig:convergence}
+\begin{description}
+\end{description}
+\end{center}
+\end{figure}
+
+\subsection{Interlocks and Polarization}
+Figure \ref{fig:basins} shows the number of basins occupied at a given time
+step, averaged over all 1000 runs of the conform strategy.
+While the small-world and preferential attachment networks quickly begin to
+level off and plateau at about 20 basins,
+the random-pod network typically continues to converge until all agents have reached consensus on a single basin.
+The small-world and preferential attachment networks thus exhibit polarization
+(specifically multi-polar polarization or Balkanization),
+while the random-pod network does not.
+As we saw earlier in Figure \ref{fig:transitions},
+the small-world and preferential attachment networks lead to a fast convergence to popular but sub-optimal solutions.
+The observed polarization can be attributed to different neighborhoods within these networks converging to different sub-optimal solutions.
+Thus the same mechanism that allows the random-pod network to prevent information cascades allows it to prevent polarization.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{fig-conform-basin.png}
+\caption{TODO}
+\label{fig:basins}
+\begin{description}
+\end{description}
+\end{center}
+\end{figure}
+
 \section{Discussion}
+We have proposed and evaluated an empirically-motivated, agent-based model of social learing,
+based on the interlocking network structure observed across many successful large-scale participatory projects.
+Our central finding suggests that interlocks can reduce the negative effects of conformity and social influence in social-learning,
+and thereby improve deliberation and participatory governance.
+
+Groups can exhibit conformity for a number of reasons.
+Conformity can stem from social factors such as trust or social loafing.
+Alternatively, conformity can supplement individual knowledge and abilities.
+In the low-conformity best-neighbor strategy, we do not observe a substantial difference in output quality between the interlock network and other networks. In all cases we have looked at, interlock networks perform comparably to,
+or better than other common social networks. 
+Our results suggest that interlocking network structure may contribute to the success of large-scale participatory projects, and may be a useful tool for the design of large-scale sociotechnical systems.
+
+We attribute the protective effects of interlocking network structure to its ability to stop information cascades.
+A closer look at the individual agents in our model shows that conformity lowers solution quality by trapping agents in separate sub-optimal yet popular solutions and preventing them from exploring alternatives.
+This outcome is consistent with the well-known phenomenon of information cascades.
+In interlock networks however, a sub-optimal solution might become popular in one pod,
+but members of that pod are also subject to social influence from other pods.
+Those other pods are unlikely to have adopted the same sub-optimal solution,
+preventing it from spreading outside its initial pod and potentially even exerting enough social influence to replace it with an improved alternative.
+Similarly, by providing individuals with diverse social influence from throughout the wider network, our findings suggest interlocks can reduce polarization.
+
+\subsection{Limitations and Future Work}
+Our work is limited by several assumptions, which require further investigation to achieve greater generalizability.
+We make simplifying assumptions including: a static objective function, a homogeneous strategy across all agents, and truthful agents.
+All of these assumptions can be violated in some real-world settings.
+We have also assumed that agents have access to the full solution string, and that agents incorporate all bits of the string into their quality estimates.
+Extremely complex real-world tasks might be better-modeled by a collection of sub-tasks, with agents having access to only a subset of the solution string.
+We have also limited our study to learning strategies that explore new solutions solely through small mutations of existing solutions.
+Other potential strategies might generate entirely new solutions, for example, by combining parts of multiple previous solutions.
+Such generative strategies would add the ability to explore a wider range of solutions. 
+
+We also note that random assignment is just one potential way to assign pods.
+Other assignment methods may create interlock networks with different properites,
+such as longer mean shortest path lengths.
+In fact, we have explored some other methods beyond the scope of this paper,
+finding that they do alter some properties of the resulting interlock network,
+but are nonetheless consistent with our present findings.
+
+Finally, as the result of a simulation model, our findings require empirical validation.
+We have conducted some initial lab experiments and interviews, which appear consistent with our findings, but further work is needed.
+
+\subsection{Conclusion}
+Our findings suggest that interlock networks, composed of small pods linked by common membership, contribute to the success of large-scale social learning and participatory decision-making, particularly when the topic is complex and social influence is strong. They do so by preventing information cascades and polarization.
+These findings have implications for a range of contexts: participatory government and budgeting, worker-owned cooperatives, grassroots social movements, and the governance of decentralized technology. By enabling better and more participatory decision-making at larger scales, we hope this work will contribute to democratizing the governance of large sociotechnical systems, and empowering the individuals impacted by those systems.
+
+
+
 
 
 %%
@@ -790,7 +1018,7 @@ Random-Pod
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-
+[redacted for peer review]
 \end{acks}
 
 %%
@@ -803,8 +1031,7 @@ Random-Pod
 %% If your work has an appendix, this is the place to put it.
 \appendix
 
-\section{Research Methods}
-
 \section{Online Resources}
+The code and data used in this paper are available online at [redacted for peer review].
 
 \end{document}
