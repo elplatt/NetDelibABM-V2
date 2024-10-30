@@ -68,13 +68,13 @@
 %  \city{Evanston}
 %  \state{Illinois}
 %  \country{USA}
-}
+%}
 %\affiliation{%
 %  \institution{University of Michigan}
 %  \city{Ann Arbor}
 %  \state{Michigan}
 %  \country{USA}
-}
+%}
 
 %\author{Daniel M. Romero}
 %\orcid{0000-0002-8351-3463}
@@ -199,7 +199,7 @@ But not all internet-enabled participatory collaborations succeed \cite{tufekci_
 In this paper, we begin with a review of the literature on large-scale participatory decision-making and related topics.
 We focus, in particular, on empirical studies of successful large-scale participatory projects, looking for commonalities.
 We then focus on one such commonality: social network structure,
-specifically interlock networks.
+specifically a type of network known as an interlock network.
 We also narrow our focus to social learning:
 the process by which individuals revise their beliefs and opinions
 based on observations and interactions with others---a core part of participatory decision-making.
@@ -257,7 +257,8 @@ often share a common trait:
 interlocking social network structure.
 Here, we use ``network'' in the sense of a set of entities with dyadic relationships between them \cite{newman_networks_2018}, e.g.,
 individuals linked to other individuals through direct communication.
-Similarly, we use ``structure'' to refer to the configuration of individual dyadic relationships and connections rather than in the ``social system'' sense, e.g., the difference in communication links between a roundtable discussion and a lecture.
+Similarly, we use ``structure'' to refer to the configuration of individual dyadic relationships and connections, rather than in the systemic or institutional sense. A roundtable discussion for example,
+is structured to allow communication links between any pair of indidividuals, while a lecture has links from the lecturer to the audience but not between audience members (at least if they are polite).
 An {\em interlocking network} or {\em interlock}
 is a network in which groups of entities are connected (interlocked)
 through shared individual constituents \cite{taylor_world_2015}.
@@ -300,9 +301,11 @@ mason_collaborative_2012}
 can influence the success of a collaboration.
 Interlocking structure has implications for both of these factors.
 By dividing an entire collaborative project into smaller groups,
-interlocks influence group size and group composition,
+interlocks reduce group size and alter group composition,
 potentially sidestepping some of the pitfalls of large group collaboration.
-Similarly, by creating interconnections between groups through mutual membership,
+For example, a participant who monoplizes the conversation might derail their small group, but not the entire project.
+Or, a member of an underrepresented demographic would have more chances to speak as a participant in a small group of five versus a large group of one hundred.
+Additionally, by creating interconnections between groups through mutual membership,
 interlocks influence the overall structural properties of the network.
 In turn, those structural properties influence the speed and flow of information diffusion through the entire population of collaborators.
 
@@ -331,7 +334,7 @@ part of participatory decision-making
 We thus propose this work as an starting point for understanding the seemingly-important role of interlocks in large-scale participatory collaboration, leaving additional considerations as crucial future work.
 
 \subsection{Research Questions}
-Our primary focus is whether interlocking network structure improves the quality of social-learning-based collaboration:
+Our primary focus is whether interlocking network structure is beneficial for social-learning-based collaboration:
 \begin{quote}
 {\bfseries RQ 1.} Does interlocking structure influence solution quality in large-scale social learning?
 \end{quote}
@@ -461,7 +464,7 @@ allowing an implicit flow of information and influence
 \cite{sapinski_interlocking_2018}.
 Interlocks arise in other fields as well,
 including revolutionary cells
-\cite{fishcer_paul_1994, healey_using_2013},
+\cite{fischer_paul_1994, healy_using_2013},
 the UK suffragette movement \cite{crossley_covert_2012},
 and the global network of cities \cite{taylor_world_2015}.
 
@@ -558,7 +561,7 @@ Similarly, in the {\em majority illusion},
 an individual may incorrectly infer that the majority of a group holds a particular belief if they are only exposed to others who do hold that belief \cite{lerman_majority_2015}.
 Finally,
 rather than reaching a single consensus,
-social learning can cause {\polarization},
+social learning can cause {\em polarization},
 in which a group fragments into two or more factions which hold similar beliefs within each group,
 but conflicting beliefs between groups
 \cite{schkade_what_2007}.
@@ -876,10 +879,9 @@ So it is remarkable that the random-pod network does not show this behavior.
 \begin{figure}
 \begin{center}
 \includegraphics[width=5in]{fig-netdelib-results-net-boxplot.png}
-\caption{TODO}
+\caption{Solution quality for 1000 runs of the agent-based model. For each run, quality is avereaged over all 100 agents.}
 \label{fig:quality}
-\begin{description}
-\end{description}
+\Description[Two box plots]{The left plot shows results for the best-neighbor strategy, similar across all three networks, ranging from 0.2 to 1.0 with medians around 0.7. The right plot shows results for the conform strategy, ranging from 0.2 to 1.0. Small-world and preferential attachment have medians around 0.45, while random-pod has median about 0.8.}
 \end{center}
 \end{figure}
 
@@ -910,10 +912,9 @@ improvment.
 \begin{figure}
 \begin{center}
 \includegraphics[width=5in]{fig-conform-transition-basin.png}
-\caption{TODO}
+\caption{Mean number of agents adopting solutions from a different basin of attraction.}
 \label{fig:transitions}
-\begin{description}
-\end{description}
+\Description[Three time-series plots, one for each network]{All plots start around 30, curve downward at different rates described in the text, and reach 0 around timestep 30.}
 \end{center}
 \end{figure}
 
@@ -931,10 +932,11 @@ However, the random-pod networks slowest runs are notably slower than those for 
 \begin{figure}
 \begin{center}
 \includegraphics[width=5in]{fig-netdelib-converge-net-boxplot.png}
-\caption{TODO}
+\caption{Distribution of convergence time for 1000 runs of the simulation.}
 \label{fig:convergence}
-\begin{description}
-\end{description}
+\Description[Two box plots]{The left, for best-neighbor ranges from about 5.0 to 22.5, with more
+details described in the text. The right, for conform, ranges between 0 and 300,
+with more details described in the text.}
 \end{center}
 \end{figure}
 
@@ -955,10 +957,9 @@ Thus the same mechanism that allows the random-pod network to prevent informatio
 \begin{figure}
 \begin{center}
 \includegraphics[width=5in]{fig-conform-basin.png}
-\caption{TODO}
+\caption{Mean number of occupied basins of attraction over 1000 simulation runs.}
 \label{fig:basins}
-\begin{description}
-\end{description}
+\Description[A time series plot]{Time ranges from time 0 to 30. Curves are shown for all three networks. Occupied basins starts at 100 and curves downward over time, with more details described in the text.}
 \end{center}
 \end{figure}
 
